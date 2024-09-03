@@ -1,4 +1,4 @@
-## Setting up the environemnt for Intel compilers
+# Setting up the environemnt for Intel compilers
 
 -> export CC=icc \
 -> export FC=ifort \
