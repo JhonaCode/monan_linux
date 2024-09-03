@@ -11,3 +11,8 @@ MONAN - Model for Ocean-laNd-Atmosphere predictioN
 Generally, these libraries should be their (except for Jasper). If you do not have those then install using the steps below or you directly start from Step 5:
 
 ## Setting up the environemnt for Intel compilers
+
+export CC=icc
+export FC=ifort
+export F90=ifort
+export CXX=icpc
