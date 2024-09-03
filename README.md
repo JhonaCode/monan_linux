@@ -18,3 +18,14 @@ Generally, these libraries should be their (except for Jasper). If you do not ha
 -> export CXX=icpc 
 
 ### 1. Installing zlib
+
+mkdir wrf_install_intel
+cd wrf_install_intel/
+wget https://zlib.net/zlib-1.2.11.tar.gz
+
+tar xvf zlib-1.2.11.tar.gz
+cd zlib-1.2.11/
+
+./configure --prefix=/home/wrf/wrf_libs_intel/
+make
+make install
