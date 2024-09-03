@@ -50,3 +50,25 @@ wget https://hdf-wordpress-1.s3.amazonaws.com/wp-content/uploads/manual/HDF5/HDF
 ./configure --prefix=/home/wrf/wrf_libs_intel/ --with-zlib=/home/wrf/wrf_libs_intel/ --enable-fortran \
 make  \
 make install
+
+### 4. Installing NetCDF
+
+cd ../ \
+wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.7.4.tar.gz \
+tar xvf netcdf-c-4.7.4.tar.gz \
+cd netcdf-c-4.7.4/ \
+
+export LD_LIBRARY_PATH=/home/wrf/wrf_libs_intel/lib:$LD_LIBRARY_PATH \
+export LDFLAGS=-L/home/wrf/wrf_libs_intel/lib \
+export CPPFLAGS=-I/home/wrf/wrf_libs_intel/include \
+./configure --prefix=/home/wrf/wrf_libs_intel/ \
+make \
+make install \
+
+cd ../ \
+wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-fortran-4.5.3.tar.gz \
+tar xvf netcdf-fortran-4.5.3.tar.gz \
+cd netcdf-fortran-4.5.3/ \
+./configure --prefix=/home/wrf/wrf_libs_intel/ \
+make \
+make install
