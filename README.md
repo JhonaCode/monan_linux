@@ -21,10 +21,10 @@ Generally, these libraries should be their (except for Jasper). If you do not ha
 
 mkdir lib_intel   \
 cd lib_intel/   \
-wget https://zlib.net/zlib-1.2.11.tar.gz \
+wget https://zlib.net/zlib-1.2.11.tar.gz 
 
 tar xvf zlib-1.2.11.tar.gz \
-cd zlib-1.2.11/   \
+cd zlib-1.2.11/   
 
 ./configure --prefix=/home/users/lib/lib_intel/ \
 make \
@@ -37,7 +37,7 @@ make install
 wget https://onboardcloud.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.gz \
 
 tar xvf libpng-1.6.37.tar.gz \
-cd libpng-1.6.37/ \
+cd libpng-1.6.37/ 
 
 ./configure --prefix=/home/users/lib/lib_intel/ \
 make \
@@ -76,10 +76,10 @@ make install
 
 ### 5. Installing JasPer
 
-cd ../
-wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz
-tar xvf jasper-1.900.29.tar.gz
-./configure --prefix=/home/users/lib/lib_intel/ 
-make
+cd ../ \
+wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz \
+tar xvf jasper-1.900.29.tar.gz \
+./configure --prefix=/home/users/lib/lib_intel/ \
+make \
 make install
 
