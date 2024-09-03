@@ -15,5 +15,6 @@ Generally, these libraries should be their (except for Jasper). If you do not ha
 -> export CC=icc \
 -> export FC=ifort \
 -> export F90=ifort \
--> export CXX=icpc \
+-> export CXX=icpc 
 
+### 1. Installing zlib
