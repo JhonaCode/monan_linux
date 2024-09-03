@@ -29,3 +29,16 @@ cd zlib-1.2.11/   \
 ./configure --prefix=/home/wrf/wrf_libs_intel/ \
 make \
 make install 
+
+
+### 2. Installing libpng
+
+
+wget https://onboardcloud.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.gz \
+
+tar xvf libpng-1.6.37.tar.gz \
+cd libpng-1.6.37/ \
+
+./configure --prefix=/home/wrf/wrf_libs_intel/ \
+make \
+make install
