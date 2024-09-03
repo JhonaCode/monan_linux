@@ -42,3 +42,11 @@ cd libpng-1.6.37/ \
 ./configure --prefix=/home/wrf/wrf_libs_intel/ \
 make \
 make install
+
+### 3. Installing HDF5
+
+cd ../ \
+wget https://hdf-wordpress-1.s3.amazonaws.com/wp-content/uploads/manual/HDF5/HDF5_1_12_0/source/hdf5-1.12.0.tar.gz \
+./configure --prefix=/home/wrf/wrf_libs_intel/ --with-zlib=/home/wrf/wrf_libs_intel/ --enable-fortran \
+make  \
+make install
