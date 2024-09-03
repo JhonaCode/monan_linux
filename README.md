@@ -12,8 +12,8 @@ Generally, these libraries should be their (except for Jasper). If you do not ha
 
 ## Setting up the environemnt for Intel compilers
 
-export CC=icc
-export FC=ifort
-export F90=ifort
-export CXX=icpc
+ export CC=icc 
+ export FC=ifort 
+ export F90=ifort 
+ export CXX=icpc 
 
