@@ -1,20 +1,20 @@
-# Setting up the environemnt for Intel compilers
+# Setting up the environemnt for gnu compilers
 
--> export CC=icc \
--> export FC=ifort \
--> export F90=ifort \
--> export CXX=icpc 
+-> export CC=gcc \
+-> export FC=gfortran \
+-> export F90=gfortran \
+-> export CXX=g++ 
 
 ### 1. Installing zlib
 
-mkdir lib_intel   \
-cd lib_intel/   \
+mkdir lib_gnu   \
+cd lib_gnu/   \
 wget https://zlib.net/zlib-1.2.11.tar.gz 
 
 tar xvf zlib-1.2.11.tar.gz \
 cd zlib-1.2.11/   
 
-./configure --prefix=/home/users/lib/lib_intel/ \
+./configure --prefix=/home/users/lib/lib_gnu/ \
 make \
 make install 
 
@@ -27,7 +27,7 @@ wget https://onboardcloud.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libp
 tar xvf libpng-1.6.37.tar.gz \
 cd libpng-1.6.37/ 
 
-./configure --prefix=/home/users/lib/lib_intel/ \
+./configure --prefix=/home/users/lib/lib_gnu/ \
 make \
 make install
 
@@ -35,7 +35,7 @@ make install
 
 cd ../ \
 wget https://hdf-wordpress-1.s3.amazonaws.com/wp-content/uploads/manual/HDF5/HDF5_1_12_0/source/hdf5-1.12.0.tar.gz \
-./configure --prefix=/home/users/lib/lib_intel/ --with-zlib=/home/users/lib/lib_intel/ --enable-fortran \
+./configure --prefix=/home/users/lib/lib_gnu/ --with-zlib=/home/users/lib/lib_gnu/ --enable-fortran \
 make  \
 make install
 
@@ -46,10 +46,10 @@ wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.7.4.tar.gz \
 tar xvf netcdf-c-4.7.4.tar.gz \
 cd netcdf-c-4.7.4/ 
 
-export LD_LIBRARY_PATH=/home/users/lib/lib_intel/lib:$LD_LIBRARY_PATH \
-export LDFLAGS=-L/home/users/lib/lib_intel/lib \
-export CPPFLAGS=-I/home/users/lib/lib_intel/include \
-./configure --prefix=/home/users/lib/lib_intel/ \
+export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/lib:$LD_LIBRARY_PATH \
+export LDFLAGS=-L/home/users/lib/lib_gnu/lib \
+export CPPFLAGS=-I/home/users/lib/lib_gnu/include \
+./configure --prefix=/home/users/lib/lib_gnu/ \
 make \
 make install 
 
@@ -57,7 +57,7 @@ cd ../ \
 wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-fortran-4.5.3.tar.gz \
 tar xvf netcdf-fortran-4.5.3.tar.gz \
 cd netcdf-fortran-4.5.3/ \
-./configure --prefix=/home/users/lib/lib_intel/ \
+./configure --prefix=/home/users/lib/lib_gnu/ \
 make \
 make install
 
@@ -67,7 +67,7 @@ make install
 cd ../ \
 wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz \
 tar xvf jasper-1.900.29.tar.gz \
-./configure --prefix=/home/users/lib/lib_intel/ \
+./configure --prefix=/home/users/lib/lib_gnu/ \
 make \
 make install
 
