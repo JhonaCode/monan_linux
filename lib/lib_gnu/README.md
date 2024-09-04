@@ -391,6 +391,30 @@ ctest
 
 make install
 
+### 16. Installing eccodes
+
+wget  https://code.mpimet.mpg.de/attachments/download/29616/cdo-2.4.3.tar.gz
+
+rm -rf cdo-2.4.3 \
+tar -zxvf cdo-2.4.3.tar.gz 
+
+cd cdo-2.4.3 
+
+export CC=gcc \
+export CFLAGS= \
+export LDFLAGS= \
+export CXX=g++ \
+export CXXFLAGS= \
+export CXXCPP= \
+export F77=gfortran \
+export FFLAG= \
+export CPP= 
+
+./configure --prefix=/home/paulo_kubota/lib/lib_gnu/cdo  --with-netcdf=/home/paulo_kubota/lib/lib_gnu/netcdf --with-hdf5=/home/paulo_kubota/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5 \
+make \
+make install
+
+
 
 
 
