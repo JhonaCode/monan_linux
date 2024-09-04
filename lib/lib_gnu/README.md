@@ -354,18 +354,18 @@ mkdir -p build
 
 cd build
 
-export AEC_LIBRARY='/home/paulo_kubota/lib/lib_gnu/aec/libaec/lib'   \
-export AEC_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/aec/libaec/include' \
-export JASPER_LIBRARY='/home/paulo_kubota/lib/lib_gnu/grib/grib2/lib' \
-export JASPER_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/grib/grib2/include/jasper' \
-export OPENJPEG_LIBRARY='/home/paulo_kubota/lib/lib_gnu/openjpeg/lib'  \
-export OPENJPEG_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/openjpeg/include/openjpeg-2.5'  \
-export ZLIB_LIBRARY='/home/paulo_kubota/lib/lib_gnu/zlib/lib' \
-export ZLIB_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/zlib/include'  \
-export PNG_LIBRARY='/home/paulo_kubota/lib/lib_gnu/libpng/lib'   \
-export PNG_PNG_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/libpng/include'  \
-export NetCDF_C_LIBRARY='/home/paulo_kubota/lib/lib_gnu/netcdf/lib' \
-export NetCDF_C_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/netcdf/include'  
+export AEC_LIBRARY='/home/users/lib/lib_gnu/aec/libaec/lib'   \
+export AEC_INCLUDE_DIR='/home/users/lib/lib_gnu/aec/libaec/include' \
+export JASPER_LIBRARY='/home/users/lib/lib_gnu/grib/grib2/lib' \
+export JASPER_INCLUDE_DIR='/home/users/lib/lib_gnu/grib/grib2/include/jasper' \
+export OPENJPEG_LIBRARY='/home/users/lib/lib_gnu/openjpeg/lib'  \
+export OPENJPEG_INCLUDE_DIR='/home/users/lib/lib_gnu/openjpeg/include/openjpeg-2.5'  \
+export ZLIB_LIBRARY='/home/users/lib/lib_gnu/zlib/lib' \
+export ZLIB_INCLUDE_DIR='/home/users/lib/lib_gnu/zlib/include'  \
+export PNG_LIBRARY='/home/users/lib/lib_gnu/libpng/lib'   \
+export PNG_PNG_INCLUDE_DIR='/home/users/lib/lib_gnu/libpng/include'  \
+export NetCDF_C_LIBRARY='/home/users/lib/lib_gnu/netcdf/lib' \
+export NetCDF_C_INCLUDE_DIR='/home/users/lib/lib_gnu/netcdf/include'  
 cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-O2 -Wall" -DCMAKE_C_COMPILER=gcc  \ \
       -DCMAKE_Fortran_FLAGS=gfortran  \  \
       -DCMAKE_C_FLAGS="-O2 -Wall"  \ \
@@ -376,14 +376,14 @@ cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-O2 -Wall" -DCMAKE_C_COMPILER=
       -DENABLE_JPG_LIBJASPER=ON    \ \
       -DENABLE_PNG=OFF                \ \
       -DENABLE_FORTRAN=ON             \ \
-      -DAEC_PATH=/home/paulo_kubota/lib/lib_gnu/aec/libaec/         \ \
-      -DJASPER_PATH=/home/paulo_kubota/lib/lib_gnu/grib/grib2/      \ \
-      -DZLIB_PATH=/home/paulo_kubota/lib/lib_gnu/zlib/              \ \
-      -DPNG_ROOT=/home/paulo_kubota/lib/lib_gnu/libpng/             \ \
-      -DNETCDF_PATH=/home/paulo_kubota/lib/lib_gnu/netcdf/          \ \
-      -DOPENJPEG_PATH=/home/paulo_kubota/lib/lib_gnu/openjpeg/      \ \
-      -DHDF5_PATH=/home/paulo_kubota/lib/lib_gnu/hdf5/hdf5-1.12.1/  \ \
-      -DCMAKE_INSTALL_PREFIX=/home/paulo_kubota/lib/lib_gnu/eccodes ../eccodes-2.26.0-Source
+      -DAEC_PATH=/home/users/lib/lib_gnu/aec/libaec/         \ \
+      -DJASPER_PATH=/home/users/lib/lib_gnu/grib/grib2/      \ \
+      -DZLIB_PATH=/home/users/lib/lib_gnu/zlib/              \ \
+      -DPNG_ROOT=/home/users/lib/lib_gnu/libpng/             \ \
+      -DNETCDF_PATH=/home/users/lib/lib_gnu/netcdf/          \ \
+      -DOPENJPEG_PATH=/home/users/lib/lib_gnu/openjpeg/      \ \
+      -DHDF5_PATH=/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/  \ \
+      -DCMAKE_INSTALL_PREFIX=/home/users/lib/lib_gnu/eccodes ../eccodes-2.26.0-Source
 
 make
 
