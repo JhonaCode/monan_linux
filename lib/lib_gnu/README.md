@@ -445,5 +445,5 @@ ln -s libpng12.a libpng.a
 
 wget https://www.earthsystemgrid.org/dataset/ncl.662.dap/file/ncl_ncarg-6.6.2-Debian8.11_64bit_gnu492.tar.gz
 
-### 18. Installing grads
+### 19. Installing grads
 wget https://sourceforge.net/projects/opengrads/files/grads2/2.2.1.oga.1/Linux%20%2864%20Bits%29/opengrads-2.2.1.oga.1-bundle-x86_64-pc-linux-gnu-glibc_2.11.3.tar.gz/download
