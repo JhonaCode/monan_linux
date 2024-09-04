@@ -131,9 +131,9 @@ export LDFLAGS="-L/home/users/lib/lib_gnu/zlib/lib"
                             
 export CPPFLAGS="-I/home/users/lib/lib_gnu/zlib/include"     
                               
-export FC=gfortran             #Fortran compiler command
+export FC=gfortran       
 
-export CXX=g++                #C++ compiler command
+export CXX=g++    
 
 export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/zlib/lib:${LD_LIBRARY_PATH}
 
