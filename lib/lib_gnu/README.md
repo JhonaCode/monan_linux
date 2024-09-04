@@ -103,11 +103,11 @@ rm -rf openmpi-5.0.5
 
 tar -zxvf openmpi-5.0.5.tar.gz
 
-export CC=gcc	      #C compiler command
+export CC=gcc	      
 
-export CXX=g++	      #C++ compiler command
+export CXX=g++	      
 
-export FC=gfortran	      #Fortran compiler command
+export FC=gfortran	  
 
 cd openmpi-5.0.5
 
@@ -125,29 +125,15 @@ rm -rf  hdf5-1.12.1
 
 tar -zxvf  hdf5-1.12.1.tar.gz
 
-export CC=gcc              #C compiler command
+export CC=gcc           
 
-export CFLAGS              #C compiler flags
-
-export LDFLAGS="-L/home/users/lib/lib_gnu/zlib/lib"      #linker flags, e.g. -L<lib dir> if you have libraries i
-                            #nonstandard directory <lib dir>
+export LDFLAGS="-L/home/users/lib/lib_gnu/zlib/lib"      
                             
-export LIBS                 #libraries to pass to the linker, e.g. -l<library>
-
-export CPPFLAGS="-I/home/users/lib/lib_gnu/zlib/include"     #(Objective) C/C++ preprocessor flags, e.g. -I<include 
-                              #you have headers in a nonstandard directory <include d
+export CPPFLAGS="-I/home/users/lib/lib_gnu/zlib/include"     
                               
-export CPP                   #C preprocessor
-
 export FC=gfortran             #Fortran compiler command
 
-export FCFLAGS                #Fortran compiler flags
-
 export CXX=g++                #C++ compiler command
-
-export CXXFLAGS               #C++ compiler flags
-
-export CXXCPP                  #C++ preprocessor
 
 export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/zlib/lib:${LD_LIBRARY_PATH}
 
@@ -167,7 +153,7 @@ ln -s libhdf5.a    libhdf5_fortran.a
 
 ln -s libhdf5_hl.a libhdf5_hl_fortran.a
 
-cp /home/paulo_kubota/lib/lib_gnu/zlib/lib/* .
+cp /home/users/lib/lib_gnu/zlib/lib/* .
 
 ### 4. Installing NetCDF
 
