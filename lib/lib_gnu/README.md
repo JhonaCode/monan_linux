@@ -391,7 +391,7 @@ ctest
 
 make install
 
-### 16. Installing eccodes
+### 16. Installing cdo
 
 wget  https://code.mpimet.mpg.de/attachments/download/29616/cdo-2.4.3.tar.gz
 
@@ -410,11 +410,40 @@ export F77=gfortran \
 export FFLAG= \
 export CPP= 
 
-./configure --prefix=/home/paulo_kubota/lib/lib_gnu/cdo  --with-netcdf=/home/paulo_kubota/lib/lib_gnu/netcdf --with-hdf5=/home/paulo_kubota/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5 \
+./configure --prefix=/home/users/lib/lib_gnu/cdo  --with-netcdf=/home/users/lib/lib_gnu/netcdf --with-hdf5=/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5 \
 make \
 make install
 
 
+### 17. Installing grib2
 
+wget https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v3.1.0.tar.gz
 
+rm -rf grib2
 
+tar -zxvf wgrib2.tgz.v3.1.0
+
+cd grib2
+
+export FC=gfortran
+
+export CC="gcc "
+
+export CXX="g++ "
+
+make clean
+
+make 
+
+make lib
+
+cd lib
+
+ln -s libpng12.a libpng.a 
+
+### 18. Installing ncl
+
+wget https://www.earthsystemgrid.org/dataset/ncl.662.dap/file/ncl_ncarg-6.6.2-Debian8.11_64bit_gnu492.tar.gz
+
+### 18. Installing grads
+wget https://sourceforge.net/projects/opengrads/files/grads2/2.2.1.oga.1/Linux%20%2864%20Bits%29/opengrads-2.2.1.oga.1-bundle-x86_64-pc-linux-gnu-glibc_2.11.3.tar.gz/download
