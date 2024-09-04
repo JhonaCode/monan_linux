@@ -155,27 +155,123 @@ ln -s libhdf5_hl.a libhdf5_hl_fortran.a
 
 cp /home/users/lib/lib_gnu/zlib/lib/* .
 
-### 4. Installing NetCDF
+### 7. Installing NetCDF-CC
 
-cd ../ \
-wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.7.4.tar.gz \
-tar xvf netcdf-c-4.7.4.tar.gz \
-cd netcdf-c-4.7.4/ 
+wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-c-4.8.1.tar.gz \
 
-export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/lib:$LD_LIBRARY_PATH \
-export LDFLAGS=-L/home/users/lib/lib_gnu/lib \
-export CPPFLAGS=-I/home/users/lib/lib_gnu/include \
-./configure --prefix=/home/users/lib/lib_gnu/ \
-make \
-make install 
+rm -rf bin include lib share netcdf-c-4.8.1
 
-cd ../ \
-wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-fortran-4.5.3.tar.gz \
-tar xvf netcdf-fortran-4.5.3.tar.gz \
-cd netcdf-fortran-4.5.3/ \
-./configure --prefix=/home/users/lib/lib_gnu/ \
-make \
+tar -zxvf netcdf-c-4.8.1.tar.gz
+
+cd netcdf-c-4.8.1
+
+export CC=gcc
+
+export CXX=g++
+
+export CPPFLAGS="-I/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/include -I/home/users/lib/lib_gnu/zlib/include -I/home/users/lib/lib_gnu/curl/include -I/home/users/lib/lib_gnu/netcdf/include"
+
+export LDFLAGS="-L/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/lib -L/home/users/lib/lib_gnu/zlib/lib -L/home/users/lib/lib_gnu/curl/lib  -L/home/users/lib/lib_gnu/netcdf/lib"
+
+export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/lib:${LD_LIBRARY_PATH}
+
+./configure --prefix="/home/users/lib/lib_gnu/netcdf" --enable-hdf5 --enable-netcdf-4 
+
+make
+
+make check
+
 make install
+
+### 8. Installing NetCDF-C++
+
+wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-cxx4-4.3.1.tar.gz \
+
+rm -rf netcdf-cxx4-4.3.1
+
+tar -zxvf netcdf-cxx4-4.3.1.tar.gz
+
+cd netcdf-cxx4-4.3.1
+
+export CC=gcc
+
+export CXX=g++
+
+export CPPFLAGS="-I/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/include -I/home/users/lib/lib_gnu/netcdf/include"
+
+export LDFLAGS="-L/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/lib      -L/home/users/lib/lib_gnu/netcdf/lib"
+
+export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/lib:/home/users/lib/lib_gnu/netcdf/lib:${LD_LIBRARY_PATH}
+
+./configure --prefix="/home/users/lib/lib_gnu/netcdf" --enable-hdf5 --enable-netcdf-4 --with-hdf5="/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5"
+
+make
+
+make check
+
+make install
+
+### 9. Installing NetCDF-Fortran
+
+wget https://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-fortran-4.5.4.tar.gz \
+
+rm -rf netcdf-fortran-4.5.4
+
+tar -zxvf netcdf-fortran-4.5.4.tar.gz
+
+cd netcdf-fortran-4.5.4
+
+export CC=gcc
+
+export FC=gfortran
+
+export F77=gfortran
+
+export CXX=g++
+
+export FFLAGS="-I/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/include   -I/home/users/lib/lib_gnu/netcdf/include" 
+
+export FCFLAGS="-I/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/include  -I/home/users/lib/lib_gnu/netcdf/include"    
+
+export CPPFLAGS="-I/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/include -I/home/users/lib/lib_gnu/netcdf/include"
+
+export LDFLAGS="-L/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/lib      -L/home/users/lib/lib_gnu/netcdf/lib"
+
+export LIBS='-lhdf5 -lhdf5_hl  -lnetcdf'
+
+export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/lib:/home/users/lib/lib_gnu/netcdf/lib:${LD_LIBRARY_PATH}
+
+./configure  --prefix="/home/users/lib/lib_gnu/netcdf"  --enable-large-file-tests 
+
+make
+
+make check
+
+make install  
+
+### 10. Installing PnetCDF
+
+wget https://parallel-netcdf.github.io/Release/pnetcdf-1.12.3.tar.gz
+
+rm -rf pnetcdf-1.12.3
+
+tar -zxvf pnetcdf-1.12.3.tar.gz
+
+cd pnetcdf-1.12.3
+
+mkdir -p /home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF
+
+./configure --prefix=/home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF \
+                  MPICC=mpicc   MPICXX=mpicxx \
+                  MPIF77=mpif77 MPIF90=mpif90 \
+                  CC=gcc CXX=g++ F77=gfortran FC=gfortran 
+
+make
+
+make check
+
+make install
+
 
 
 ### 5. Installing JasPer
