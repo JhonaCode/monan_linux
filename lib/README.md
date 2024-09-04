@@ -8,6 +8,7 @@ if [[ "$USER_COMPILER" == "intel" ]];then
 ####ESMF intel
 
 export PYTHON=`which python` 
+
 source /home/users/intel/oneapi/setvars.sh --force
 
 export PNETCDF=/home/users/lib/lib_intel/pnetcdf/pnetcdf-1.12.3/PnetCDF \
