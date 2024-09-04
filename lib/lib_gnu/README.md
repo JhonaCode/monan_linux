@@ -56,7 +56,7 @@ make install
 
 make clean
 
-### 1. Installing zlib
+### 3. Installing zlib
 
 wget https://zlib.net/zlib-1.3.1.tar.gz 
 
@@ -66,32 +66,108 @@ tar -zxvf zlib-1.3.1.tar.gz
 
 cd zlib-1.3.1
 
-./configure --prefix=/home/paulo_kubota/lib/lib_gnu/zlib 
+./configure --prefix=/home/users/lib/lib_gnu/zlib 
 
 make
 
 make install
 
 
-### 2. Installing libpng
+### 4. Installing libpng
 
+wget https://onboardcloud.dl.sourceforge.net/project/libpng/libpng16/1.2.57/libpng-1.2.57.tar.gz \
 
-wget https://onboardcloud.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.gz \
+rm -rf libpng-1.2.57
 
-tar xvf libpng-1.6.37.tar.gz \
-cd libpng-1.6.37/ 
+tar -zxvf libpng-1.2.57.tar.gz
 
-./configure --prefix=/home/users/lib/lib_gnu/ \
-make \
+cd  libpng-1.2.57
+
+export CC=gcc
+
+export CPPFLAGS='-I/home/users/lib/lib_gnu/zlib/include'
+
+export LDFLAGS='-L/home/users/lib/lib_gnu/zlib/lib'
+
+./configure --prefix=/home/users/lib/lib_gnu/libpng  
+
+make
+
 make install
 
-### 3. Installing HDF5
+### 5. Installing Open MPI
 
-cd ../ \
-wget https://hdf-wordpress-1.s3.amazonaws.com/wp-content/uploads/manual/HDF5/HDF5_1_12_0/source/hdf5-1.12.0.tar.gz \
-./configure --prefix=/home/users/lib/lib_gnu/ --with-zlib=/home/users/lib/lib_gnu/ --enable-fortran \
-make  \
+wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.5.tar.gz
+
+rm -rf openmpi-5.0.5
+
+tar -zxvf openmpi-5.0.5.tar.gz
+
+export CC=gcc	      #C compiler command
+
+export CXX=g++	      #C++ compiler command
+
+export FC=gfortran	      #Fortran compiler command
+
+cd openmpi-5.0.5
+
+./configure  --prefix=/home/users/lib/lib_gnu/openmpi  
+
+make
+
 make install
+
+### 6. Installing HDF5
+
+wget https://hdf-wordpress-1.s3.amazonaws.com/wp-content/uploads/manual/HDF5/HDF5_1_12_1/source/hdf5-1.12.1.tar.gz 
+
+rm -rf  hdf5-1.12.1
+
+tar -zxvf  hdf5-1.12.1.tar.gz
+
+export CC=gcc              #C compiler command
+
+export CFLAGS              #C compiler flags
+
+export LDFLAGS="-L/home/users/lib/lib_gnu/zlib/lib"      #linker flags, e.g. -L<lib dir> if you have libraries i
+                            #nonstandard directory <lib dir>
+                            
+export LIBS                 #libraries to pass to the linker, e.g. -l<library>
+
+export CPPFLAGS="-I/home/users/lib/lib_gnu/zlib/include"     #(Objective) C/C++ preprocessor flags, e.g. -I<include 
+                              #you have headers in a nonstandard directory <include d
+                              
+export CPP                   #C preprocessor
+
+export FC=gfortran             #Fortran compiler command
+
+export FCFLAGS                #Fortran compiler flags
+
+export CXX=g++                #C++ compiler command
+
+export CXXFLAGS               #C++ compiler flags
+
+export CXXCPP                  #C++ preprocessor
+
+export LD_LIBRARY_PATH=/home/users/lib/lib_gnu/zlib/lib:${LD_LIBRARY_PATH}
+
+cd hdf5-1.12.1
+
+./configure --prefix=/home/users/lib/lib_gnu/hdf5 --enable-fortran --enable-parallel --enable-shared=no --with-zlib=/home/users/lib/lib_gnu/zlib/lib
+
+make
+
+make check
+
+make install
+
+cd hdf5/lib
+
+ln -s libhdf5.a    libhdf5_fortran.a
+
+ln -s libhdf5_hl.a libhdf5_hl_fortran.a
+
+cp /home/paulo_kubota/lib/lib_gnu/zlib/lib/* .
 
 ### 4. Installing NetCDF
 
