@@ -261,10 +261,7 @@ cd pnetcdf-1.12.3
 
 mkdir -p /home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF
 
-./configure --prefix=/home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF \
-                  MPICC=mpicc   MPICXX=mpicxx \
-                  MPIF77=mpif77 MPIF90=mpif90 \
-                  CC=gcc CXX=g++ F77=gfortran FC=gfortran 
+./configure --prefix=/home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF MPICC=mpicc   MPICXX=mpicxx  MPIF77=mpif77 MPIF90=mpif90 CC=gcc CXX=g++ F77=gfortran FC=gfortran 
 
 make
 
