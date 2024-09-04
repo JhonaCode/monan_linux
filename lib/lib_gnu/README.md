@@ -366,8 +366,9 @@ export PNG_LIBRARY='/home/paulo_kubota/lib/lib_gnu/libpng/lib'   \
 export PNG_PNG_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/libpng/include'  \
 export NetCDF_C_LIBRARY='/home/paulo_kubota/lib/lib_gnu/netcdf/lib' \
 export NetCDF_C_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/netcdf/include'  
-cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-O2 -Wall" -DCMAKE_C_COMPILER=gcc  -DCMAKE_Fortran_FLAGS=gfortran \  \
-      -DCMAKE_C_FLAGS="-O2 -Wall" \ \
+cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-O2 -Wall" -DCMAKE_C_COMPILER=gcc  \ \
+      -DCMAKE_Fortran_FLAGS=gfortran  \  \
+      -DCMAKE_C_FLAGS="-O2 -Wall"  \ \
       -DCMAKE_Fortran_FLAGS="-g -O1 " \ \
       -DENABLE_NETCDF=ON              \ \
       -DENABLE_JPG=ON                \ \
