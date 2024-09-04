@@ -269,16 +269,127 @@ make check
 
 make install
 
+### 11. Installing metis
+
+wget https://altushost-swe.dl.sourceforge.net/project/openfoam-extend/foam-extend-3.0/ThirdParty/metis-5.1.0.tar.gz
+
+rm -rf metis-5.1.0 bin lib include
+
+tar -zxvf metis-5.1.0.tar.gz
+
+cd metis-5.1.0
+
+make config shared=0 cc=gcc prefix=/home/users/lib/lib_gnu/metis
+
+make
+
+make install
+
+### 12. Installing pio
+
+netcdf_prefix=/home/users/lib/lib_gnu/netcdf
+pnetcdf_prefix=/home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF
+
+url=https://github.com/NCAR/ParallelIO.git
+build=/home/users/lib/lib_gnu/pio/ParallelIO-master
+prefix=/home/users/lib/lib_gnu/pio
+
+rm -rf pio-2.5.4
+tar -zxvf pio-2.5.4.tar.gz
+cd pio-2.5.4
+
+export CPPFLAGS='-I/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/include -I/home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF/include  -I/home/users/lib/lib_gnu/netcdf/include  -I/home/users/lib/lib_gnu/netcdf/include'
+export LDFLAGS=' -L/home/users/lib/lib_gnu/hdf5/hdf5-1.12.1/hdf5/lib     -L/home/users/lib/lib_gnu/pnetcdf/pnetcdf-1.12.3/PnetCDF/lib      -L/home/users/lib/lib_gnu/netcdf/lib '
+export LIBS='-lhdf5 -lhdf5_hl -lnetcdf  -lnetcdff -lpnetcdf'
+export CC=mpicxx
+export FC=mpif90
+export CFLAGS=' -fpermissive'
+make clean
+./configure  --prefix=${prefix}   --enable-fortran   --enable-shared=no
+make check
+make install
+
+### 13. Installing Openjpeg
+
+wget https://github.com/uclouvain/openjpeg/archive/refs/tags/v2.5.2.tar.gz
+ 
+rm -rf build   lib64   include  bin  lib
+
+rm -rf openjpeg-2.5.2
+
+tar -zxvf v2.5.2.tar.gz
+
+mkdir -p build 
+
+cd build
+
+cmake -DCMAKE_INSTALL_PREFIX=/home/users/lib/lib_gnu/openjpeg ../openjpeg-2.5.2
+
+make
+
+make install
+
+make clean
 
 
-### 5. Installing JasPer
+### 14. Installing JasPer
 
-cd ../ \
 wget https://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz \
 tar xvf jasper-1.900.29.tar.gz \
 ./configure --prefix=/home/users/lib/lib_gnu/ \
 make \
 make install
+
+### 15. Installing eccodes
+
+wget eccodes-2.26.0-Source.tar.gz
+
+rm -f eccodes-2.26.0-Source
+
+rm -rf build include lib   lib64   share  bin
+
+tar -zxvf  eccodes-2.26.0-Source.tar.gz
+
+mkdir -p build 
+
+cd build
+
+export AEC_LIBRARY='/home/paulo_kubota/lib/lib_gnu/aec/libaec/lib'   \
+export AEC_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/aec/libaec/include' \
+export JASPER_LIBRARY='/home/paulo_kubota/lib/lib_gnu/grib/grib2/lib' \
+export JASPER_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/grib/grib2/include/jasper' \
+export OPENJPEG_LIBRARY='/home/paulo_kubota/lib/lib_gnu/openjpeg/lib'  \
+export OPENJPEG_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/openjpeg/include/openjpeg-2.5'  \
+export ZLIB_LIBRARY='/home/paulo_kubota/lib/lib_gnu/zlib/lib' \
+export ZLIB_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/zlib/include'  \
+export PNG_LIBRARY='/home/paulo_kubota/lib/lib_gnu/libpng/lib'   \
+export PNG_PNG_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/libpng/include'  \
+export NetCDF_C_LIBRARY='/home/paulo_kubota/lib/lib_gnu/netcdf/lib' \
+export NetCDF_C_INCLUDE_DIR='/home/paulo_kubota/lib/lib_gnu/netcdf/include'  
+cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="-O2 -Wall" -DCMAKE_C_COMPILER=gcc  -DCMAKE_Fortran_FLAGS=gfortran \  \
+      -DCMAKE_C_FLAGS="-O2 -Wall" \ \
+      -DCMAKE_Fortran_FLAGS="-g -O1 " \
+      -DENABLE_NETCDF=ON              \ \
+      -DENABLE_JPG=ON                \ \
+      -DENABLE_JPG_LIBOPENJPEG=ON    \ \
+      -DENABLE_JPG_LIBJASPER=ON    \ \
+      -DENABLE_PNG=OFF                \ \
+      -DENABLE_FORTRAN=ON             \ \
+      -DAEC_PATH=/home/paulo_kubota/lib/lib_gnu/aec/libaec/         \ \
+      -DJASPER_PATH=/home/paulo_kubota/lib/lib_gnu/grib/grib2/      \ \
+      -DZLIB_PATH=/home/paulo_kubota/lib/lib_gnu/zlib/              \ \
+      -DPNG_ROOT=/home/paulo_kubota/lib/lib_gnu/libpng/             \ \
+      -DNETCDF_PATH=/home/paulo_kubota/lib/lib_gnu/netcdf/          \ \
+      -DOPENJPEG_PATH=/home/paulo_kubota/lib/lib_gnu/openjpeg/      \ \
+      -DHDF5_PATH=/home/paulo_kubota/lib/lib_gnu/hdf5/hdf5-1.12.1/  \ \
+      -DCMAKE_INSTALL_PREFIX=/home/paulo_kubota/lib/lib_gnu/eccodes ../eccodes-2.26.0-Source
+
+make
+
+ctest 
+
+make install
+
 
 
 
