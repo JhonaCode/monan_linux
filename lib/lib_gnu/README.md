@@ -5,18 +5,72 @@
 -> export F90=gfortran \
 -> export CXX=g++ 
 
+mkdir /home/users/lib \
+cd /home/users/lib \
+mkdir lib_gnu   \
+cd lib_gnu/   
+
+### 1. Installing curl
+
+  wget https://curl.se/download/curl-8.9.1.tar.gz
+
+rm -rf curl-8.9.1 bin include lib  share
+
+tar -zxvf curl-8.9.1.tar.gz
+
+cd curl-8.9.1
+
+export CC=gcc
+
+./configure --prefix=/home/users/lib/lib_gnu/curl --without-ssl
+
+make
+
+make install
+
+### 2. Installing aec
+
+wget https://swprojects.dkrz.de/redmine/attachments/453
+
+rm -rf build 
+
+rm -rf include
+
+rm -rf bin
+
+rm -rf lib
+
+rm -rf libaec-v0.3.2
+
+tar -zxvf libaec-v0.3.2.tar.gz
+
+mkdir -p build 
+
+cd build
+
+cmake -DCMAKE_INSTALL_PREFIX=/home/users/lib/lib_gnu/aec/libaec ../libaec-v0.3.2
+
+make
+
+make install
+
+make clean
+
 ### 1. Installing zlib
 
-mkdir lib_gnu   \
-cd lib_gnu/   \
-wget https://zlib.net/zlib-1.2.11.tar.gz 
+wget https://zlib.net/zlib-1.3.1.tar.gz 
 
-tar xvf zlib-1.2.11.tar.gz \
-cd zlib-1.2.11/   
+rm -rf zlib-1.3.1 include lib  share
 
-./configure --prefix=/home/users/lib/lib_gnu/ \
-make \
-make install 
+tar -zxvf zlib-1.3.1.tar.gz
+
+cd zlib-1.3.1
+
+./configure --prefix=/home/paulo_kubota/lib/lib_gnu/zlib 
+
+make
+
+make install
 
 
 ### 2. Installing libpng
