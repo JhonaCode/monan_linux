@@ -327,7 +327,33 @@ tar xvf jasper-1.900.29.tar.gz \
 make \
 make install
 
-### 14. Installing eccodes
+### 14. Installing grib2
+
+wget https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v3.1.0.tar.gz
+
+rm -rf grib2
+
+tar -zxvf wgrib2.tgz.v3.1.0
+
+cd grib2
+
+export FC=ifx
+
+export CC="icx "
+
+export CXX="icpx "
+
+make clean
+
+make
+
+make lib
+
+cd lib
+
+ln -s libpng12.a libpng.a 
+
+### 15. Installing eccodes
 
 wget eccodes-2.26.0-Source.tar.gz
 
@@ -378,7 +404,7 @@ ctest
 
 make install
 
-### 15. Installing cdo
+### 16. Installing cdo
 
 wget  https://code.mpimet.mpg.de/attachments/download/29616/cdo-2.4.3.tar.gz
 
@@ -401,32 +427,6 @@ export CPP=
 make \
 make install
 
-
-### 16. Installing grib2
-
-wget https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v3.1.0.tar.gz
-
-rm -rf grib2
-
-tar -zxvf wgrib2.tgz.v3.1.0
-
-cd grib2
-
-export FC=ifx
-
-export CC="icx "
-
-export CXX="icpx "
-
-make clean
-
-make 
-
-make lib
-
-cd lib
-
-ln -s libpng12.a libpng.a 
 
 ### 17. Installing ncl
 
