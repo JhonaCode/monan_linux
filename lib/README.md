@@ -1,7 +1,9 @@
 # Check if the following commands are installed:
 ``
- make \
- gmake \
+ make 
+ 
+ gmake 
+ 
  cmake
 ``
 
