@@ -20,5 +20,8 @@ MONAN - Model for Ocean-laNd-Atmosphere predictioN
 16. grads
 17. ncl    
 
-Generally, these libraries should be their (except for Jasper). If you do not have those then install using the steps below or you directly start from Step 5:
+Generally, these libraries should be their (except for Jasper). If you do not have those then install using the steps below or you directly start from Step 17:
 
+## The used versions of the libraries can be downloaded from the link.
+
+https://ftp.cptec.inpe.br/pesquisa/bam/paulo.kubota/externo/monan/monan_linux.tar.gz
