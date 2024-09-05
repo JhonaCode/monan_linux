@@ -1,3 +1,7 @@
+# Install intel compilers
+
+https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?operatingsystem=linux
+
 # Setting up the environemnt for intel compilers
 
 -> export CC=icx \
