@@ -7,6 +7,7 @@
 ```
 
 # Configure user account environment (.bashrc)
+```
 export USER_COMPILER=intel
 
 if [[ "$USER_COMPILER" == "intel" ]];then
@@ -75,3 +76,4 @@ export PATH=/home/users/lib/lib_gnu/metis/bin:/home/users/lib/lib_gnu/grads/open
 
 fi
 
+```
