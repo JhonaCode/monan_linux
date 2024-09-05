@@ -53,7 +53,7 @@ if [ ${TypeGrid} = "variable_resolution" ]; then
 fi
 cd ${SUBMIT_HOME}/pre/databcs/meshes/${TypeGrid}/
 path_rec=${SUBMIT_HOME}"/pre/databcs/meshes/regional_domain/"
-path_bin=${SUBMIT_HOME}"/pre/sources/${ESMF_COMPILER}/MPAS-Tools/MPAS-Limited-Area/"
+path_bin=${SUBMIT_HOME}"/pre/sources/${USER_COMPILER}/MPAS-Tools/MPAS-Limited-Area/"
 
 if [ ${Domain} = "regional" ]; then
 echo "----------------------------"  
