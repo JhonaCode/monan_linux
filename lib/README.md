@@ -1,11 +1,10 @@
 # Check if the following commands are installed:
-``
+
+```
  make 
- 
  gmake 
- 
  cmake
-``
+```
 
 # Configure user account environment (.bashrc)
 export USER_COMPILER=intel
