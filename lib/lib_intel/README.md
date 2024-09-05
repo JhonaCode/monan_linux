@@ -444,5 +444,7 @@ more environments.txt /
 /home/paulo_kubota/anaconda3 /
 /home/paulo_kubota/anaconda3/envs/ncl_stable 
 
+```
+
 ### 18. Installing grads
 wget https://sourceforge.net/projects/opengrads/files/grads2/2.2.1.oga.1/Linux%20%2864%20Bits%29/opengrads-2.2.1.oga.1-bundle-x86_64-pc-linux-intel-glibc_2.11.3.tar.gz/download
