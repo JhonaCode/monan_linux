@@ -424,5 +424,25 @@ ln -s libpng12.a libpng.a
 
 wget https://www.earthsystemgrid.org/dataset/ncl.662.dap/file/ncl_ncarg-6.6.2-Debian8.11_64bit_intel492.tar.gz
 
+or
+
+####### Installation via conda
+
+The current version of NCL is [6.6.2](http://www.ncl.ucar.edu/current_release.shtml), which can be installed via [conda](http://www.ncl.ucar.edu/Download/conda.shtml).
+
+```
+conda create -n ncl_stable -c conda-forge ncl
+
+ls -a
+
+check directory .conda/
+
+~/.conda$ ls /
+aau_token  environments.txt
+
+more environments.txt /
+/home/paulo_kubota/anaconda3 /
+/home/paulo_kubota/anaconda3/envs/ncl_stable 
+
 ### 18. Installing grads
 wget https://sourceforge.net/projects/opengrads/files/grads2/2.2.1.oga.1/Linux%20%2864%20Bits%29/opengrads-2.2.1.oga.1-bundle-x86_64-pc-linux-intel-glibc_2.11.3.tar.gz/download
