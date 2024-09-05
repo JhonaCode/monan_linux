@@ -2,6 +2,8 @@
 
 https://www.intel.com/content/www/us/en/developer/articles/news/free-intel-software-developer-tools.html
 
+https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html
+
 https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit-download.html?operatingsystem=linux
 
 # Setting up the environemnt for intel compilers
