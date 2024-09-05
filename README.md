@@ -14,11 +14,11 @@ MONAN - Model for Ocean-laNd-Atmosphere predictioN
 10. pio
 11. openjpeg
 12. JasPer
-13. eccodes
-14. cdo
-15. grib
-16. grads
-17. ncl    
+13. grib
+14. eccodes
+15. cdo
+16. ncl    
+17. grads
 
 Generally, these libraries should be their (except for Jasper). If you do not have those then install using the steps below or you directly start from Step 17:
 
