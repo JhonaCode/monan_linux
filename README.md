@@ -24,4 +24,4 @@ Generally, these libraries should be their (except for Jasper). If you do not ha
 
 ## The used versions of the libraries can be downloaded from the link.
 
-https://ftp.cptec.inpe.br/pesquisa/bam/paulo.kubota/externo/monan/monan_linux.tar.gz
+https://ftp.cptec.inpe.br/pesquisa/bam/paulo.kubota/externo/monan/lib.tar.gz
