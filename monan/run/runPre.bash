@@ -135,7 +135,7 @@ echo -e  "${GREEN}==>${NC} Creating Function_RecDomain.sh for...\n"
 
 echo -e  "${GREEN}==>${NC} Plot Domain.sh for...\n"
 
-#  Function_PlotDomain ${RES_KM} ${EXP_RES} ${frac} ${Domain} ${AreaRegion} ${TypeGrid}
+  Function_PlotDomain ${RES_KM} ${EXP_RES} ${frac} ${Domain} ${AreaRegion} ${TypeGrid}
 
 echo -e  "${GREEN}==>${NC} Creating make_static.sh for submiting init_atmosphere...\n"
 
