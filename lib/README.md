@@ -7,6 +7,9 @@
 ```
 
 # Configure user account environment (.bashrc)
+
+### "As the libraries are being installed, it is necessary to export the LD_LIBRARY_PATH and PATH."
+
 ```
 export USER_COMPILER=intel
 
