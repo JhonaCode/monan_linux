@@ -1,5 +1,9 @@
 # download WRF and WPS code
 
+wget https://ftp.cptec.inpe.br/pesquisa/bam/paulo.kubota/externo/monan/pre/sources/gnu/WRF/WRF.tar.gz
+
+or 
+
 https://www2.mmm.ucar.edu/wrf/users/download/get_source.html
 
 https://github.com/wrf-model
