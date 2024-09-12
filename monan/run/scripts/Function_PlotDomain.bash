@@ -59,17 +59,17 @@ echo "----------------------------"
 echo "       REGIONAL DOMAIN      "  
 echo "----------------------------"  
 
-clon=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $3/1}'`
-clat=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $2/1}'`
+clon=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $3/1}'`
+clat=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $2/1}'`
 #
 #   1grau -  110000
 #   y     - 1000000.
 #
-Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | awk '{printf "%.5f\n", (($2/1)/100000)+2}'`
-startlon=`echo ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
-endlon=`echo   ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
-startlat=`echo ${clat}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
-endlat=`echo ${clat}    ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
+Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | gawk '{printf "%.5f\n", (($2/1)/100000)+2}'`
+startlon=`echo ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
+endlon=`echo   ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
+startlat=`echo ${clat}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
+endlat=`echo ${clat}    ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
 FILEDATA=${pathin}/${Domain}/${RES_KM}/${AreaRegion}.${EXP_RES}.grid.nc
 
 sed -e "s,#FILEDATA#,${FILEDATA},g;s,#startlon#,${startlon},g;s,#endlon#,${endlon},g;s,#startlat#,${startlat},g;s,#endlat#,${endlat},g" \
@@ -81,18 +81,18 @@ else
 echo "----------------------------"  
 echo "        GLOBAL DOMAIN       "  
 echo "----------------------------"  
-Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | awk '{printf "%.5f\n", (($2/1)/100000)+2}'`
-startlon=-180   #`echo ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
-endlon=180   #`echo   ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
-startlat=-90 #`echo ${clat}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
-endlat=90    #`echo ${clat}    ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
+Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | gawk '{printf "%.5f\n", (($2/1)/100000)+2}'`
+startlon=-180   #`echo ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
+endlon=180   #`echo   ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
+startlat=-90 #`echo ${clat}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
+endlat=90    #`echo ${clat}    ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
 FILEDATA=${pathin}/${Domain}/${RES_KM}/${AreaRegion}.${EXP_RES}.grid.nc
 sed -e "s,#FILEDATA#,${FILEDATA},g" \
 	 ${DIR_MESH}/mpas-a_mesh.ncl > ${pathin}/mpas-a_mesh.ncl
 
 ${path_ncl}/ncl ${pathin}/mpas-a_mesh.ncl
 rm ${pathin}/mpas-a_mesh.ncl
-mv ${pathin}/global_mesh.pdf ${SUBMIT_HOME}/run
+mv ${pathin}/global_mesh.png ${SUBMIT_HOME}/run
 
 fi
 

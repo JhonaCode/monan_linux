@@ -59,7 +59,7 @@ pathmesh=${SUBMIT_HOME}
 
 
 MON=${LABELI:4:2}
-case "`echo ${MON} | awk '{print $1/1 }'`" in
+case "`echo ${MON} | gawk '{print $1/1 }'`" in
      1)CMON="Jan" ;;
      2)CMON="Feb" ;;
      3)CMON="Mar" ;;
@@ -84,9 +84,9 @@ DOM=R
 postname='MONAN_DIAG_'${DOM}'_POS_'${EXP_NAME}'_'${LABELI}'_'${LABELI}'.mm.x'${frac}'.'${EXP_RES}'L55.nc'
 
 ncdump -v longitude ${pathin}/${postname} > ${pathin}/file.tmp0
-aa=`cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}' | bc -l`
-nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -1" | bc -l`
-bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -2" | bc -l`
+aa=`cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}' | bc -l`
+nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -1" | bc -l`
+bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -2" | bc -l`
 tail -n $nn  ${pathin}/file.tmp0 > ${pathin}/file.tmp1
 head -n $bb  ${pathin}/file.tmp1 > ${pathin}/file.tmp2
 coma=","
@@ -95,9 +95,9 @@ sed 's/,/ /g;s/;/ /g;s/longitude/ /g;s/=/ /g' ${pathin}/file.tmp2 > ${pathin}/lo
 
 
 ncdump -v latitude ${pathin}/${postname} > ${pathin}/file.tmp0
-aa=`cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}' | bc -l`
-nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -1" | bc -l`
-bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -2" | bc -l`
+aa=`cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}' | bc -l`
+nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -1" | bc -l`
+bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -2" | bc -l`
 tail -n $nn  ${pathin}/file.tmp0 > ${pathin}/file.tmp1
 head -n $bb  ${pathin}/file.tmp1 > ${pathin}/file.tmp2
 coma=","
@@ -107,19 +107,19 @@ echo $nn $aa
 echo $nn $aa
 
 export DIR_MESH=${pathmesh}/pre/databcs/meshes/regional_domain/
-clon=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $3/1}'`
-clat=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $2/1}'`
+clon=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $3/1}'`
+clat=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $2/1}'`
 #
 #   1grau -  110000
 #   y     - 1000000.
 #
-Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | awk '{printf "%.5f\n", (($2/1)/100000)+2}'`
-startlon=`echo ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
-endlon=`echo   ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
-startlat=`echo ${clat}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
-endlat=`echo ${clat}    ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
-nlat=`echo ${startlat}  ${endlat} ${len_disp}| awk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    # 700
-nlon=`echo ${startlon}  ${endlon} ${len_disp}| awk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    #  867
+Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | gawk '{printf "%.5f\n", (($2/1)/100000)+2}'`
+startlon=`echo ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
+endlon=`echo   ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
+startlat=`echo ${clat}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
+endlat=`echo ${clat}    ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
+nlat=`echo ${startlat}  ${endlat} ${len_disp}| gawk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    # 700
+nlon=`echo ${startlon}  ${endlon} ${len_disp}| gawk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    #  867
 else
 
 echo "----------------------------"  
@@ -129,9 +129,9 @@ DOM=G
 postname='MONAN_DIAG_'${DOM}'_POS_'${EXP_NAME}'_'${LABELI}'_'${LABELI}'.mm.x'${frac}'.'${EXP_RES}'L55.nc'
 
 ncdump -v longitude ${pathin}/${postname} > ${pathin}/file.tmp0
-aa=`cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}' | bc -l`
-nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -1" | bc -l`
-bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -2" | bc -l`
+aa=`cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}' | bc -l`
+nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -1" | bc -l`
+bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -2" | bc -l`
 tail -n $nn  ${pathin}/file.tmp0 > ${pathin}/file.tmp1
 head -n $bb  ${pathin}/file.tmp1 > ${pathin}/file.tmp2
 coma=","
@@ -140,9 +140,9 @@ sed 's/,/ /g;s/longitude/ /g;s/=/ /g' ${pathin}/file.tmp2 > ${pathin}/longitude.
 
 
 ncdump -v latitude ${pathin}/${postname} > ${pathin}/file.tmp0
-aa=`cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}' | bc -l`
-nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -1" | bc -l`
-bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | awk '{print $1}') && echo "$a - $b -2" | bc -l`
+aa=`cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}' | bc -l`
+nn=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -1" | bc -l`
+bb=`a=$(cat ${pathin}/file.tmp0 | wc -l) && b=$(cat -n ${pathin}/file.tmp0 | grep data: | gawk '{print $1}') && echo "$a - $b -2" | bc -l`
 tail -n $nn  ${pathin}/file.tmp0 > ${pathin}/file.tmp1
 head -n $bb  ${pathin}/file.tmp1 > ${pathin}/file.tmp2
 coma=","
@@ -154,8 +154,8 @@ echo $nn $aa
 #   1grau -  110000
 #   y     - 1000000.
 #
-nlat=`ncdump -c ${postname} | head -n 6| grep latitude | awk '{print $3}'`
-nlon=`ncdump -c ${postname} | head -n 6| grep longitude | awk '{print $3}'`
+nlat=`ncdump -c ${postname} | head -n 6| grep latitude | gawk '{print $3}'`
+nlon=`ncdump -c ${postname} | head -n 6| grep longitude | gawk '{print $3}'`
 
 fi
 cat<<EOF1>${pathin}/file.ctl

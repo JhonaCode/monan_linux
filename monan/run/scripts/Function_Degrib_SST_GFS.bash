@@ -193,7 +193,7 @@ ln -sf ${EXPDIR}/sst/SST\:${start_date:0:13} ${EXPDIR}/SST\:${start_date:0:13}
 End=\`date +%s.%N\`
 echo  "FINISHED AT \`date\` "
 echo \$End   >>Timing.degrib
-echo \$Start \$End | awk '{print \$2 - \$1" sec"}' >> Timing.degrib
+echo \$Start \$End | gawk '{print \$2 - \$1" sec"}' >> Timing.degrib
 
 grep "Successful completion of program ungrib.exe" ${EXPDIR}/sst/ungrib.log >& /dev/null
 

@@ -10,7 +10,7 @@ echo ${mensage}
 
 if [ ${TypeGrid} = 'variable_resolution' ]; then
 
-case "`echo ${EXP_RES} | awk '{print $1/1 }'`" in
+case "`echo ${EXP_RES} | gawk '{print $1/1 }'`" in
   835586)dt_step=12  ;RES_KM='060_003km';frac=20;len_disp=3000  ;; 
   535554)dt_step=90  ;RES_KM='060_015km';frac=4 ;len_disp=15000 ;; 
   163842)dt_step=150 ;RES_KM='092_025km';frac=4 ;len_disp=25000 ;; 
@@ -18,7 +18,7 @@ esac
 
 else
 
-case "`echo ${EXP_RES} | awk '{print $1/1 }'`" in
+case "`echo ${EXP_RES} | gawk '{print $1/1 }'`" in
 65536002)dt_step=12  ;RES_KM='003_km';frac=1;len_disp=3000   ;;
  2621442)dt_step=90  ;RES_KM='015_km';frac=1;len_disp=15000  ;; 
  1024002)dt_step=150 ;RES_KM='024_km';frac=1;len_disp=24000  ;; 

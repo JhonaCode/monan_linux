@@ -10,7 +10,7 @@ if [ ${TypeGrid} = 'variable_resolution' ]; then
 # selected ncores to submission job
 #
 
-case "`echo ${EXP_RES} | awk '{print $1/1 }'`" in
+case "`echo ${EXP_RES} | gawk '{print $1/1 }'`" in
   835586)cores_model=512 ;nodes_model=4 ;cores=256 ;cores_stat=32   ;nodes=2 ;; 	   #'060_003km' ;; 
   535554)cores_model=256 ;nodes_model=2 ;cores=32  ;cores_stat=32   ;nodes=1 ;; 	   # 060_015km
   163842)cores_model=128 ;nodes_model=1 ;cores=32  ;cores_stat=32   ;nodes=1 ;; 	   # 060_015km
@@ -25,7 +25,7 @@ ThreadsPerMPITask=1       # Number of cores hosting OpenMP threads
 
 else
 
-case "`echo ${EXP_RES} | awk '{print $1/1 }'`" in
+case "`echo ${EXP_RES} | gawk '{print $1/1 }'`" in
 65536002)cores_model=514 ;nodes_model=4 ;cores=256 ;cores_stat=32  ;nodes=2 ;;
  2621442)cores_model=256 ;nodes_model=2 ;cores=128 ;cores_stat=32  ;nodes=1 ;; 
  1024002)cores_model=128 ;nodes_model=1 ;cores=32  ;cores_stat=32  ;nodes=1 ;;     

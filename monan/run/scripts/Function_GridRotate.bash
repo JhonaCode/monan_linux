@@ -56,8 +56,8 @@ input_filename=${path_exe}/global/${RES_KM/}/x${frac}.${EXP_RES}.grid.nc
 output_filename=${path_exe}/global/${RES_KM}/g${frac}.${EXP_RES}.grid.nc
 
 cd ${path_exe}
-clon=`cat ${path_rec}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $3/1}'`
-clat=`cat ${path_rec}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $2/1}'`
+clon=`cat ${path_rec}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $3/1}'`
+clat=`cat ${path_rec}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $2/1}'`
 
 cat<<EOF>${path_exe}/namelist.input
 &input

@@ -84,32 +84,32 @@ DOM=R
 export DIR_MESH=${SUBMIT_HOME}/pre/databcs/meshes/regional_domain/
 
 
-clon=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $3/1}'`
-clat=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | awk '{printf "%.5f\n", $2/1}'`
+clon=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $3/1}'`
+clat=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Point: | gawk '{printf "%.5f\n", $2/1}'`
 #
 #   1grau -  110000
 #   y     - 1000000.   
 #
-Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | awk '{printf "%.5f\n", (($2/1)/100000)+2}'`
-startlon=`echo ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
-endlon=`echo   ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
-startlat=`echo ${clat}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
-endlat=`echo ${clat}    ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
-nlat=`echo ${startlat}  ${endlat} ${len_disp}| awk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    # 700
-nlon=`echo ${startlon}  ${endlon} ${len_disp}| awk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    #  867
+Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | gawk '{printf "%.5f\n", (($2/1)/100000)+2}'`
+startlon=`echo ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
+endlon=`echo   ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
+startlat=`echo ${clat}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
+endlat=`echo ${clat}    ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
+nlat=`echo ${startlat}  ${endlat} ${len_disp}| gawk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    # 700
+nlon=`echo ${startlon}  ${endlon} ${len_disp}| gawk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    #  867
 
 else
 echo "----------------------------"  
 echo "        GLOBAL DOMAIN       "  
 echo "----------------------------"  
 DOM=G
-#Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | awk '{printf "%.5f\n", (($2/1)/100000)+2}'`
-startlon=0.2496533   #`echo ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
-endlon=359.7503   #`echo   ${clon}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
-startlat=-89.75 #`echo ${clat}  ${Semi_major_axis}| awk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
-endlat=89.75    #`echo ${clat}    ${Semi_major_axis}| awk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
-nlat=360 #`echo ${startlat}  ${endlat} ${len_disp}| awk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    # 700
-nlon=721 #`echo ${startlon}  ${endlon} ${len_disp}| awk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    #  867
+#Semi_major_axis=`cat ${DIR_MESH}/${AreaRegion}.ellipse.pts | grep Semi-major-axis: | gawk '{printf "%.5f\n", (($2/1)/100000)+2}'`
+startlon=0.2496533   #`echo ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -64.0
+endlon=359.7503   #`echo   ${clon}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -39.0
+startlat=-89.75 #`echo ${clat}  ${Semi_major_axis}| gawk '{printf "%.5f\n", $1-(($2/2)+7)} '`   # -40.0
+endlat=89.75    #`echo ${clat}    ${Semi_major_axis}| gawk '{printf "%.5f\n", $1+(($2/2)+7)} '`   # -20.0
+nlat=360 #`echo ${startlat}  ${endlat} ${len_disp}| gawk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    # 700
+nlon=721 #`echo ${startlon}  ${endlon} ${len_disp}| gawk '{printf "%d\n", sqrt(((($2-$1+1)*110000)/$3)^2) } '`    #  867
 fi
 
 mkdir -p ${SUBMIT_HOME}/${LABELI}/pos/runs/${EXP_NAME}/postprd/logs
@@ -177,7 +177,7 @@ dirpost=`pwd`
 dirmodel=\`dirname \${files}\`
 filename=\`basename \${files}\`
 if [ \${filename:0:4} = "diag" ]; then
-labelF=\`echo \${filename} | awk '{print substr(\$1,6,22)}'\`
+labelF=\`echo \${filename} | gawk '{print substr(\$1,6,22)}'\`
 cp ${SUBMIT_HOME}/pos/namelist/${version_pos}/include_fields.diag      ${SUBMIT_HOME}/${LABELI}/pos/runs/${EXP_NAME}/postprd/include_fields   >> ${LOG_FILE}
 cp ${SUBMIT_HOME}/pos/namelist/${version_pos}/exclude_fields.diag      ${SUBMIT_HOME}/${LABELI}/pos/runs/${EXP_NAME}/postprd/exclude_fields   >> ${LOG_FILE}
 
@@ -185,7 +185,7 @@ labelC=\${labelF:0:4}\${labelF:5:2}\${labelF:8:2}\${labelF:11:2}
 postname='MONAN_DIAG_'${DOM}'_POS_'${EXP_NAME}'_'${LABELI}'_'\${labelC}'.mm.x'${frac}'.'${EXP_RES}'L55.nc'
 
 else
-labelF=\`echo \${filename} | awk '{print substr(\$1,9,22)}'\`
+labelF=\`echo \${filename} | gawk '{print substr(\$1,9,22)}'\`
 cp ${SUBMIT_HOME}/pos/namelist/${version_pos}/include_fields.history      ${SUBMIT_HOME}/${LABELI}/pos/runs/${EXP_NAME}/postprd/include_fields   >> ${LOG_FILE}
 cp ${SUBMIT_HOME}/pos/namelist/${version_pos}/exclude_fields.history      ${SUBMIT_HOME}/${LABELI}/pos/runs/${EXP_NAME}/postprd/exclude_fields   >> ${LOG_FILE}
 

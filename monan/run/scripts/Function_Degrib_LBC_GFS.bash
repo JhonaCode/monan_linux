@@ -74,6 +74,7 @@ USERDATA=`echo ${EXP} | tr '[:upper:]' '[:lower:]'`
 
 OPERDIR=/oper/dados/ioper/tempo/${EXP}
 BNDDIR=$OPERDIR/0p25/brutos/${LABELI:0:4}/${LABELI:4:2}/${LABELI:6:2}/${LABELI:8:2}
+BNDDIR=${DATADIR}/global/gfs/${LABELI:0:4}${LABELI:4:2}${LABELI:6:2}${LABELI:8:2}
 
 
 #
@@ -132,7 +133,7 @@ if [ ${Domain} = "regional" ]; then
             for files in $filelist
             do
                filename=`basename $files`
-               nhour=`echo ${filename:21:3} | awk '{print $1/1}' `
+               nhour=`echo ${filename:21:3} | gawk '{print $1/1}' `
                if [ ${nhour} -le 168 ] ; then    
                   echo "Processing $filename file..."
                    if [ ! -e ${path_reg}/${filename}  ]; then
@@ -238,7 +239,7 @@ rm -f GRIBFILE.*
 End=\`date +%s.%N\`
 echo  "FINISHED AT \`date\` "
 echo \$End   >>Timing.degrib
-echo \$Start \$End | awk '{print \$2 - \$1" sec"}' >> Timing.degrib
+echo \$Start \$End | gawk '{print \$2 - \$1" sec"}' >> Timing.degrib
 
 grep "Successful completion of program ungrib.exe" ungrib.log >& /dev/null
 
@@ -275,5 +276,10 @@ chmod +x ${EXPDIR}/degrib_lbc_exe.sh
 cd ${DIRMONAN_PRE_SCR}/${LABELI}/pre/runs/${EXP_NAME}
 
 echo sbatch --wait ${EXPDIR}/degrib_lbc_exe.sh
+if [ ${SLURM} = "NO" ]; then
 ${EXPDIR}/degrib_lbc_exe.sh
+else
+sbatch --wait ${EXPDIR}/degrib_lbc_exe.sh
+fi
+
 }

@@ -151,7 +151,7 @@ fi
 End=\`date +%s.%N\`
 echo  "FINISHED AT \`date\` "
 echo \$End   >> ${STATICPATH}/Timing
-echo \$Start \$End | awk '{print \$2 - \$1" sec"}' >> ${STATICPATH}/Timing
+echo \$Start \$End | gawk '{print \$2 - \$1" sec"}' >> ${STATICPATH}/Timing
 
 grep "Finished running" log.init_atmosphere.0000.out >& /dev/null
 

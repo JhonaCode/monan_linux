@@ -84,7 +84,7 @@ echo "        GLOBAL DOMAIN       "
 echo "----------------------------"  
 ln global/${RES_KM}/x${frac}.${EXP_RES}.graph.info  global/${RES_KM}/${AreaRegion}.${EXP_RES}.graph.info
 ln global/${RES_KM}/x${frac}.${EXP_RES}.grid.nc     global/${RES_KM}/${AreaRegion}.${EXP_RES}.grid.nc
-ln global/${RES_KM}/x${frac}.${EXP_RES}.grid.nc     global/${RES_KM}/${AreaRegion}.${EXP_RES}.static.nc
+ln global/${RES_KM}/x${frac}.${EXP_RES}.static.nc     global/${RES_KM}/${AreaRegion}.${EXP_RES}.static.nc
 
 ${path_mets}/gpmetis     -minconn     -contig    -niter=1000    global/${RES_KM}/${AreaRegion}.${EXP_RES}.graph.info    128
 ${path_mets}/gpmetis     -minconn     -contig    -niter=1000    global/${RES_KM}/${AreaRegion}.${EXP_RES}.graph.info    32

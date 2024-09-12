@@ -63,6 +63,7 @@ fi
 HSTMAQ=$(hostname)
 BASEDIR=${SUBMIT_HOME}
 RUNDIR=${BASEDIR}/${LABELI}/pre/runs
+DATADIR=${BASEDIR}/pre/datain/
 TBLDIRGRIB=${SUBMIT_HOME}/pre/Variable_Tables
 DIR_MESH=${SUBMIT_HOME}/pre/databcs/meshes/${TypeGrid}/${Domain}/${RES_KM}/
 NMLDIR=${BASEDIR}/pre/namelist/${version_model}
@@ -74,6 +75,7 @@ USERDATA=${EXP}
 
 OPERDIR=/oper/dados/ioper/tempo/${EXP}
 BNDDIR=$OPERDIR/0p25/brutos/${LABELI:0:4}/${LABELI:4:2}/${LABELI:6:2}/${LABELI:8:2}
+BNDDIR=${DATADIR}/global/gfs/${LABELI:0:4}${LABELI:4:2}${LABELI:6:2}${LABELI:8:2}
 
 echo $BNDDIR
 
@@ -168,8 +170,14 @@ ulimit -c unlimited
 ulimit -v unlimited
 ulimit -s unlimited
 
-cd ${DIR_HOME}run
-#. ${DIR_HOME}/run/load_monan_app_modules.sh
+cd ${DIR_HOME}/run
+
+if [ ${SLURM} = "NO" ]; then
+echo   ${EXPDIR}/InitAtmos_ic_exe.sh
+else
+. ${DIR_HOME}/run/load_monan_app_modules.sh
+
+fi
 
 cd ${EXPDIR}
 
@@ -191,13 +199,16 @@ echo  "STARTING AT \`date\` "
 Start=\`date +%s.%N\`
 echo \$Start >  ${EXPDIR}/Timing.InitAtmos
 
-#time mpirun -np \$SLURM_NTASKS -env UCX_NET_DEVICES=mlx5_0:1 -genvall ./\${executable}
- mpirun -np 4 -env UCX_NET_DEVICES=mlx5_0:1 -genvall ./\${executable}
+if [ ${SLURM} = "NO" ]; then
+ mpirun -np 4  ./\${executable}
+else
+time mpirun -np \$SLURM_NTASKS -env UCX_NET_DEVICES=mlx5_0:1 -genvall ./\${executable}
+fi
 
 End=\`date +%s.%N\`
 echo  "FINISHED AT \`date\` "
 echo \$End   >> ${EXPDIR}/Timing.InitAtmos
-echo \$Start \$End | awk '{print \$2 - \$1" sec"}' >>  ${EXPDIR}/Timing.InitAtmos
+echo \$Start \$End | gawk '{print \$2 - \$1" sec"}' >>  ${EXPDIR}/Timing.InitAtmos
 
 
 date
@@ -210,7 +221,11 @@ echo -e  "${GREEN}==>${NC} Submiting InitAtmos_ic_exe.sh...\n"
 cd  ${DIRMONAN_PRE_SCR}/${LABELI}/pre/runs/${EXP_NAME}
 
 echo sbatch --wait ${EXPDIR}/InitAtmos_ic_exe.sh
+if [ ${SLURM} = "NO" ]; then
 ${EXPDIR}/InitAtmos_ic_exe.sh
+else
+sbatch --wait ${EXPDIR}/InitAtmos_ic_exe.sh
+fi
 
 if [ ! -e ${AreaRegion}.${EXP_RES}.init.nc ]; then
   echo -e  "\n${RED}==>${NC} ***** ATTENTION *****\n"	

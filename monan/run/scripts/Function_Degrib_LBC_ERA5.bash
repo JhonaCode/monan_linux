@@ -130,7 +130,7 @@ if [ ${nfiles} -le 20 ]; then
   for files in $filelist
   do
    filename=`basename $files`
-   nhour=`echo ${filename:21:3} | awk '{print $1/1}' `
+   nhour=`echo ${filename:21:3} | gawk '{print $1/1}' `
    if [ ${nhour} -le 168 ] ; then    
      echo "Processing $filename file..."
      if [ ! -e ${path_reg}/${filename}  ]; then
@@ -218,7 +218,7 @@ rm -f GRIBFILE.*
 End=\`date +%s.%N\`
 echo  "FINISHED AT \`date\` "
 echo \$End   >>Timing.degrib
-echo \$Start \$End | awk '{print \$2 - \$1" sec"}' >> Timing.degrib
+echo \$Start \$End | gawk '{print \$2 - \$1" sec"}' >> Timing.degrib
 
 grep "Successful completion of program ungrib.exe" ungrib.log >& /dev/null
 sleep 10
