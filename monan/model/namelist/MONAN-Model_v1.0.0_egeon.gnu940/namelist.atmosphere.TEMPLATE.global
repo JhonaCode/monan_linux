@@ -147,7 +147,7 @@ config_apply_lbcs = false    !must be set to true only if running a regional sim
     config_IAU_window_length_s = 21600.
 /
 &physics
-    config_sst_update = true                     ! if updating sea-ice and SST with an surface.nc file,
+    config_sst_update = false                     ! if updating sea-ice and SST with an surface.nc file,
                                                   ! set to true, and edit the 'surface' stream in the
                                                   ! streams.atmosphere file accordingly
     config_sstdiurn_update = false

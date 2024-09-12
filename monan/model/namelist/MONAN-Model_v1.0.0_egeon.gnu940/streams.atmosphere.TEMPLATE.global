@@ -26,14 +26,6 @@
 	<file name="stream_list.atmosphere.diagnostics"/>
 </stream>
 
-<stream name="surface"
-        type="input"
-        filename_template="#x1#.#RESNPTS#.sfc_update.nc"
-        filename_interval="none"
-        input_interval="86400" >
-
-	<file name="stream_list.atmosphere.surface"/>
-</stream>
 
 <immutable_stream name="iau"
                   type="input"
