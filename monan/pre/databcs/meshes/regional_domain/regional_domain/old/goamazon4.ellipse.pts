@@ -1,0 +1,6 @@
+Name: goamazon4
+Type: ellipse
+Point: -4.0, -60.0
+Semi-major-axis: 300000    # Meters
+Semi-minor-axis: 300000    # Meters
+Orientation-angle: 45
