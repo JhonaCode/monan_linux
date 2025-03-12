@@ -52,9 +52,11 @@ if [ ${TypeGrid} = "variable_resolution" ]; then
   return 42
 fi
 
+echo ${DIR_HOME}
+
 grid_dir=${SUBMIT_HOME}"/pre/databcs/meshes/${TypeGrid}"
 path_rec=${DIR_HOME}"/pre/databcs/meshes/regional_domain"
-path_bin=${SUBMIT_HOME}"/pre/sources/MPAS-Tools/MPAS-Limited-Area"
+path_bin=${DIR_HOME}"/pre/sources/${USER_COMPILER}/MPAS-Tools/MPAS-Limited-Area"
 
 
 if [ ${Domain} = "regional" ]; then
@@ -69,6 +71,7 @@ chmod 777 ${path_bin}/create_region
 ${path_bin}/create_region     ${path_rec}/${AreaRegion}.ellipse.pts     global/${RES_KM}/x${frac}.${EXP_RES}.grid.nc
 
 mkdir -p regional/${RES_KM}
+
 
 mv ${AreaRegion}.graph.info  regional/${RES_KM}/${AreaRegion}.${EXP_RES}.graph.info
 mv ${AreaRegion}.grid.nc     regional/${RES_KM}/${AreaRegion}.${EXP_RES}.grid.nc

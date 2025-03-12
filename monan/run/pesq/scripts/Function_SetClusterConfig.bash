@@ -7,8 +7,8 @@ local  mensage=$3
 echo ${mensage}
 
 #Partition in egeon to run
-#export partition='PESQ1'
-export partition='PESQ2'
+export partition='PESQ1'
+#export partition='PESQ2'
 
 if [ ${TypeGrid} = 'variable_resolution' ]; then
 #

@@ -76,7 +76,7 @@ HSTMAQ=$(hostname)
 
 #NMLDIR=${PREDIR}/namelist/${version_model}
 HOMEPRE=${DIR_HOME}/pre 
-RUNDIR=${DIR_HOME}/run
+RUNDIR=${DIR_HOME}/run/pesq
 SCRDIR=${RUNDIR}/scripts
 NMLDIR=${HOMEPRE}/namelist/${version_model}
 TBLDIRGRIB=${HOMEPRE}/Variable_Tables
@@ -101,8 +101,10 @@ path_reg=${DATADIR}/${Domain}/${EXP_IBC}/${LABELI}
 
 
 
-cd ${RUNDIR}
+#cd ${RUNDIR}
+#pwd
 source scripts/Function_Submit_Degrib_Egeon.bash
+
 #######################################################
 #### Verific Data to make the initial conditions
 #######################################################
@@ -179,6 +181,7 @@ cd ${SCRDIR}
 
 Function_Submit_Degrib_Egeon ${FILES2UNGRIB} ${EXPIC} ${PREFIX} ${LOGDIR} ${JobName} ${RES_KM} ${TypeGrid}
 
+
 ###########################
 #Link necessary files 
 ###########################
@@ -194,6 +197,7 @@ cp ${EXECPATH}/ungrib.exe ${EXPIC}
 ###########################
 . ${SCRDIR}/load_monan_app_modules.sh
 ###########################
+
 cd ${EXPIC}
 
 sbatch --wait ${JobName}.sh

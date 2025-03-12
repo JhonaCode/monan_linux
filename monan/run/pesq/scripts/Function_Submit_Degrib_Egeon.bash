@@ -54,6 +54,7 @@ TypeGrid=${7}
 
 #source scripts/Function_SetClusterConfig.bash
 Function_SetClusterConfig ${RES_KM} ${TypeGrid} 'set Function_SetClusterConfig '
+
 #############################################################
 # Arguments 
 
@@ -61,7 +62,6 @@ jobelapsedtime=01:00:00		# tempo de duracao do job
 MPITasks=${cores}             	# Numero de processadores que serao utilizados no Job
 TasksPerNode=128         	# Numero de processadores utilizados por tarefas MPI
 ThreadsPerMPITask=1     	# Number of cores hosting OpenMP threads
-
 
 NODES=`echo  ${cores} ${TasksPerNode} |awk '{print $1/$2}'`
 

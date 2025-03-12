@@ -101,10 +101,12 @@ end_date2=${LABELF:0:4}-${LABELF:4:2}-${LABELF:6:2}_${LABELF:8:2}:00:00
 HSTMAQ=$(hostname)
 
 #Model 
-SCRDIR=${DIR_HOME}/run/scripts
+SCRDIR=${DIR_HOME}/pesq/run/scripts
 HOMEMODEL=${DIR_HOME}/model 
 NMLDIR=${HOMEMODEL}/namelist/${version_model}
-EXECPATH=${HOMEMODEL}/exec/${version_model}/exec
+#EXECPATH=${HOMEMODEL}/exec/${version_model}/exec
+
+
 
 
 
@@ -113,7 +115,7 @@ BASEDIR=${SUBMIT_HOME}
 PREHOME=${BASEDIR}/pre
 TBLDIR=${PREHOME}/tables
 DIR_MESH=${PREHOME}/databcs/meshes/${TypeGrid}/${Domain}/${RES_KM}
-
+EXECPATH=${SUBMIT_HOME}/model/exec/${version_model}/exec
 PREDIR=${BASEDIR}/${EXP}/pre/runs
 EXPIC=${PREDIR}/wpsprd
 

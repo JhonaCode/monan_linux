@@ -54,7 +54,7 @@ end_date=${LABELF:0:4}-${LABELF:4:2}-${LABELF:6:2}_${LABELF:8:2}.00.00
 
 #########################################################
 #Load Egeon Modules
-. ${DIR_HOME}/run/scripts/load_monan_app_modules.sh
+. ${DIR_HOME}/run/pesq/scripts/load_monan_app_modules.sh
 #########################################################
 JobName=MONANR
 

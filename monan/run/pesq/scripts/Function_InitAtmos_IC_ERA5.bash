@@ -75,14 +75,14 @@ EXP=${EXP_NAME}_${RES_KM}_${LABELI}_${LABELF}
 #
 ####################################################################
 HOMEPRE=${DIR_HOME}/pre 
-RUNDIR=${DIR_HOME}/run
+RUNDIR=${DIR_HOME}/run/pesq
 SCRDIR=${RUNDIR}/scripts
 NMLDIR=${HOMEPRE}/namelist/${version_model}
 TBLDIRGRIB=${HOMEPRE}/Variable_Tables
-EXECPATH=${HOMEPRE}/exec
 
 DIR_MESH=${SUBMIT_HOME}/pre/databcs/meshes/${TypeGrid}/${Domain}/${RES_KM}
-
+GEODATA=${SUBMIT_HOME}/pre/databcs/WPS_GEOG 
+EXECPATH=${SUBMIT_HOME}/pre/exec
 
 
 BASEDIR=${SUBMIT_HOME}
@@ -92,6 +92,7 @@ EXPDIR=${PREDIR}/runs
 STATICDIR=${EXPDIR}/static
 #Directory to save the IC 
 EXPIC=${EXPDIR}/wpsprd
+
 
 LOGDIR=${EXPDIR}/logs
 
@@ -104,15 +105,16 @@ BNDDIR=${ERA5_HOME}
 path_reg=${DATADIR}
 
 
+
 #########################################################
 # selected ncores to submission job
 #
-cd ${RUNDIR}
 
 source scripts/Function_Submit_Egeon.bash
 
-Function_SetClusterConfig ${RES_KM} ${TypeGrid} 'set Function_SetClusterConfig '
+cd ${RUNDIR}
 
+Function_SetClusterConfig ${RES_KM} ${TypeGrid} 'set Function_SetClusterConfig '
 
 #########################################################
 # Criando diretorios da rodada
@@ -133,7 +135,7 @@ fi
 
 
 sed -e "s,#LABELI#,${start_date},g;\
-	s,#GEODAT#,${GEODATA},g;\
+	s,#GEODATA#,${GEODATA},g;\
 	s,#NLEV#,${NLEV},g;\
 	s,#RESNPTS#,${RES_NUM},g;\
 	s,#PREFIX#,${EXP_IBC}_IC,g;\
@@ -173,6 +175,7 @@ SCRIPT=init_atmosphere_model
 #########################################################
 #Load Egeon Modules
 . ${SCRDIR}/load_monan_app_modules.sh
+
 #########################################################
 #Run   Init_atmosphere_ic_exe.sh
 echo -e  "${GREEN}==>${NC} Submiting ${JobName}.sh...\n"

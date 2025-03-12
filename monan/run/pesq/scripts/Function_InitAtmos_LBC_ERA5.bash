@@ -77,9 +77,11 @@ RUNDIR=${DIR_HOME}/run/scripts
 SCRDIR=${RUNDIR}/scripts
 NMLDIR=${HOMEPRE}/namelist/${version_model}
 TBLDIRGRIB=${HOMEPRE}/Variable_Tables
-EXECPATH=${HOMEPRE}/exec
+
 
 DIR_MESH=${SUBMIT_HOME}/pre/databcs/meshes/${TypeGrid}/${Domain}/${RES_KM}
+GEODATA=${SUBMIT_HOME}/pre/databcs/WPS_GEOG 
+EXECPATH=${SUBMIT_HOME}/pre/exec
 
 BASEDIR=${SUBMIT_HOME}
 PREDIR=${BASEDIR}/${EXP}/pre

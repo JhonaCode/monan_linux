@@ -166,11 +166,11 @@ copy_mesh_tables() {
   cp -urfp ${path_in}/* ${path_out}
 }
 
-copy_sources                  ${path_dire_home}      ${path_prefix_out}
-copy_mesh_quasi_uniform       ${path_prefix_in}      ${path_prefix_out}
-copy_mesh_variable_resolution ${path_prefix_in}      ${path_prefix_out}
-copy_mesh_WPS_GEOG            ${path_prefix_in}      ${path_prefix_out}
-copy_mesh_datain_gfs          ${path_prefix_in}      ${path_prefix_out}
-copy_mesh_datain_era5         ${path_prefix_in}      ${path_prefix_out}
+#copy_sources                  ${path_dire_home}      ${path_prefix_out}
+#copy_mesh_quasi_uniform       ${path_prefix_in}      ${path_prefix_out}
+#copy_mesh_variable_resolution ${path_prefix_in}      ${path_prefix_out}
+#copy_mesh_WPS_GEOG            ${path_prefix_in}      ${path_prefix_out}
+#copy_mesh_datain_gfs          ${path_prefix_in}      ${path_prefix_out}
+#copy_mesh_datain_era5         ${path_prefix_in}      ${path_prefix_out}
 copy_mesh_exec                ${path_prefix_in}      ${path_prefix_out}
-copy_mesh_tables              ${path_prefix_in}      ${path_prefix_out}
+#copy_mesh_tables              ${path_prefix_in}      ${path_prefix_out}

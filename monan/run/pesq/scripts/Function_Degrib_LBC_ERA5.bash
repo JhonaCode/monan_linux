@@ -80,7 +80,7 @@ HSTMAQ=$(hostname)
 
 #NMLDIR=${PREDIR}/namelist/${version_model}
 HOMEPRE=${DIR_HOME}/pre 
-RUNDIR=${DIR_HOME}/run
+RUNDIR=${DIR_HOME}/run/pesq
 SCRDIR=${RUNDIR}/scripts
 NMLDIR=${HOMEPRE}/namelist/${version_model}
 TBLDIRGRIB=${HOMEPRE}/Variable_Tables
@@ -252,6 +252,7 @@ cp ${EXECPATH}/ungrib.exe ${EXPIC}
 #Load Egeon Modules
 ###########################
 . ${SCRDIR}/load_monan_app_modules.sh
+
 ###########################
 cd ${EXPIC}
 
@@ -267,10 +268,12 @@ if [ $? -ne 0 ]; then
    exit 21
 fi
 
+
 echo -e "  ##########################################"
 echo -e "  ###  ${GREEN}==>${NC}  Ungrib completed - `date` ####"
 echo -e "  ##########################################"
 echo -e "  \n"
+
 ######################################################
 #
 # clean up and remove links

@@ -1,0 +1,25 @@
+Feb19:
+
+Rodando iop2 run_iop2.sh com GOAMAZON2
+
+Esta rodado 10, 15
+
+         1) Rodando 7km 
+
+         2) Rodar 3km 
+
+
+__________________________________________________________________
+
+NOVAS Rodadas:
+
+xxx                |1)Mesoscale com GF, Goamazon2
+                   |
+xxx                |2)Convection Permitin com TK, Goamazon2
+                   |
+xxx                |3)Desligar Convecão rasa completamente 
+                   |
+)Rodar  goamazon, mês completo, estão as consições de contorno?
+
+xxxx 1 de feb ate o 10         |4)Rodar  goamazon, mês completo, estão as consições de
+                |contorno?

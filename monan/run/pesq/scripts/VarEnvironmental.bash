@@ -3,7 +3,10 @@
 function VarEnvironmental() {
     local  mensage=$1
     echo   ${mensage}
-    export USER_COMPILER=${USER_COMPILER}
+    #export USER_COMPILER=${USER_COMPILER}
+    export USER_COMPILER=gnu
+
+    echo ${USER_COMPILER}
 
     #Jhona
     #export DIR_HOME=`cd ..;pwd`
@@ -29,9 +32,11 @@ function VarEnvironmental() {
     export DIRMONAN_MODEL_SCR=${DIR_HOME}    # will override scripts at MONAN
     export DIRDADOS=/mnt/beegfs/monan/dados/MONAN_v0.1.0 
 
-    #export path_mets=/mnt/beegfs/paulo.kubota/monan_project/metis-5.1.0/build/Linux-x86_64/programs
+    export path_mets=/mnt/beegfs/paulo.kubota/monan_project/metis-5.1.0/build/Linux-x86_64/programs
 
-    export path_mets=/home/paulo_kubota/lib/lib_${USER_COMPILER}/metis/bin
+    #export path_mets=/home/paulo_kubota/lib/lib_${USER_COMPILER}/metis/bin
+
+    #export path_mets=/mnt/beegfs/paulo.kubota/monan_linux/lib_${USER_COMPILER}/metis/bin
 
     export NCARG_ROOT=/home/paulo.kubota/.conda/envs/ncl_stable    
     export NCARG_BIN=${NCARG_ROOT}/bin

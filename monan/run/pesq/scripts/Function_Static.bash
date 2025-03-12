@@ -60,7 +60,6 @@ TypeGrid=${8}
 EXP=${EXP_NAME}_${RES_KM}_${LABELI}_${LABELF}
 ################
 
-
 #######################################################
 # Set Paths
 #######################################################
@@ -74,13 +73,15 @@ BASEDIR=${SUBMIT_HOME}
 PREDIR=${BASEDIR}/pre
 TBLDIR=${PREDIR}/tables
 
-RUNDIR=${DIR_HOME}/run
+RUNDIR=${DIR_HOME}/pesq/run
 SCRDIR=${RUNDIR}/scripts
 
 NMLDIR=${DIR_HOME}/pre/namelist/${version_model}
 
 DATADIR=${PREDIR}/databcs
+
 GEODATA=${DATADIR}/WPS_GEOG
+
 MESHDIR=${DATADIR}/meshes/${TypeGrid}/${Domain}/${RES_KM}
 
 EXECFILEPATH=${SUBMIT_HOME}/pre/exec
@@ -91,11 +92,12 @@ STATICPATH=${SCRIPTFILEPATH}/static
 # Selected ncores to submission job
 #######################################################
 
-cd ${RUNDIR}
 
 source scripts/Function_Make_Static.bash
 
 source scripts/Function_SetClusterConfig.bash
+
+cd ${RUNDIR}
 
 Function_SetClusterConfig ${RES_KM} ${TypeGrid} 'set Function_SetClusterConfig '
 
@@ -158,6 +160,7 @@ sed -e "s,#RES#,${RES_NUM},g; \
 #############################################################
 #######make_static.sh
 #############################################################
+cd ${SCRDIR}
 
  Function_Make_Static ${STATICPATH}  'Making make_static_exe.sh'
 
